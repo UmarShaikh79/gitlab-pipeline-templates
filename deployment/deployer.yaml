@@ -1,0 +1,16 @@
+variables:
+  DEPLOYER_CONFIG: 'deployment/deploy.php'
+  DEPLOY_STAGE: 'staging'
+  PRIVATE_SSH_DEPLOYMENT_KEY: ''
+
+'Deplyoer':
+  stage: '🚀 - Deployment'
+  image: deployphp/deployer:7
+  before_script:
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  script:
+    - dep deploy --file ${DEPLOYER_CONFIG} --branch=$CI_COMMIT_REF_NAME $DEPLOY_STAGE

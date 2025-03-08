@@ -1,0 +1,15 @@
+variables:
+  SITESPEED_URL: https://example.com/override-me
+
+'Sitespeed':
+  stage: post-deploy
+  image:
+    name: sitespeedio/sitespeed.io:10.3.2
+    entrypoint: [""]
+  before_script: []
+  script:
+    - /start.sh $SITESPEED_URL
+  artifacts:
+    paths:
+      - reports
+    expire_in: 7 days
