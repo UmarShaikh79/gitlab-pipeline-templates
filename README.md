@@ -118,7 +118,7 @@ stages:
   - lint
 
 include:
-  - remote: 'gitlab-pipeline-templates-master/linter/xml.yaml'
+  - remote: 'gitlab-pipeline-templates/linter/xml.yaml'
 ```
 
 ## Configure a Step
@@ -136,7 +136,7 @@ stages:
   - post-deploy
 
 include:
-  - remote: 'gitlab-pipeline-templates-master/test/smoke.yaml'
+  - remote: 'gitlab-pipeline-templates/test/smoke.yaml'
 ```
  
 ## Step Overview
@@ -149,7 +149,7 @@ This step is a static test to find all missing dependency declarations in the `c
 
 ```yaml
 include:
-  - remote: 'gitlab-pipeline-templates-master/magento2/integrity-checker.yml'
+  - remote: 'gitlab-pipeline-templates/magento2/integrity-checker.yml'
 ```
 
 ### Deployment Sentry Release
@@ -158,6 +158,6 @@ This step is a deployment step that creates release and deployment in Sentry ser
 
 ```yaml
 include:
-  - remote: 'gitlab-pipeline-templates-master/deployment/sentry.yml'
+  - remote: 'gitlab-pipeline-templates/deployment/sentry.yml'
 ```
 
